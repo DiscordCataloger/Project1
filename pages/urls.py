@@ -1,0 +1,6 @@
+from django.urls import path
+from . import views
+# set the / api, as variable to callback function
+urlpatterns = [
+    path('', views.index, name="index")
+]
