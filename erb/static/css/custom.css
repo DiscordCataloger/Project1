@@ -1,0 +1,14 @@
+.bg-third {
+    background-color: #0EAD37;
+}
+
+#nav-disabled a {
+    color: rgb(255, 255, 255);
+}
+
+#nav-custom a,
+#nav-custom:hover a,
+#nav-disabled:hover a {
+    color: #fff;
+    background-color: #5DC674;
+}
