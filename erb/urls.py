@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+# import settings.py from the folder of Global Settings (settings.py taken from global_settings.py in Django)
+from django.conf import settings
+# import static settings from settings.py
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('pages.urls')),
     path('listings/', include('listings.urls')),
     path('admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # connecting static files to your website
