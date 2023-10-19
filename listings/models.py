@@ -1,10 +1,12 @@
-from uuid import uuid4
 from django.db import models
 from datetime import datetime
 from realtors.models import Realtor  # models.py under Realtors app
-import os
+
 
 '''
+from uuid import uuid4
+import os
+
 def path_and_rename(instance, filename):
     upload_to = 'photos/{%Y}/{%m}/{%d}'
     ext = filename.split('.')[-1]

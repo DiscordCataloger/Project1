@@ -12,3 +12,11 @@
     color: #fff;
     background-color: #5DC674;
 }
+
+#col-md-custom a {
+    position: relative;
+    width: 60%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}

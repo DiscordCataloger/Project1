@@ -12,3 +12,10 @@
     color: #fff;
     background-color: #5DC674;
 }
+
+#rounded-custom {
+    width: 70%;
+    height: 50%;
+    position: relative;
+    object-fit: cover;
+}
