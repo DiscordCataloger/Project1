@@ -28,7 +28,7 @@
                 <label class="sr-only">Street</label>
                 <input
                   type="text"
-                  name="Street"
+                  name="address"
                   class="form-control"
                   placeholder="Street"
                 />
@@ -36,11 +36,16 @@
 
               <div class="col-md-4 mb-3">
                 <label class="sr-only">State</label>
-                <select name="region" class="form-control">
+                <select name="district" class="form-control">
                   <option selected="true" disabled="disabled">
-                    Region (All)
+                    District (All)
                   </option>
-                  <option value="A">Central and West</option>
+
+                  {% for key,value in district_choices.items %}
+                  <option value="{{key}}">{{value}}</option>
+                  {% endfor %}
+
+                  {% comment %} 
                   <option value="C">Eastern</option>
                   <option value="D">Southern</option>
                   <option value="B">Wan Chai</option>
@@ -57,7 +62,9 @@
                   <option value="P">Tai Po</option>
                   <option value="K">Tsuen Wan</option>
                   <option value="L">Tuen Mun</option>
-                  <option value="M">Yuen Long</option>
+                  <option value="M">Yuen Long</option> 
+                  {% endcomment %}
+
                 </select>
               </div>
             </div>
@@ -69,8 +76,12 @@
                   <option selected="true" disabled="disabled">
                     Bedrooms (All)
                   </option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
+
+                  {% for key,value in bedroom_choices.items %}
+                  <option value="{{key}}">{{value}}</option>
+                  {% endfor %}
+
+                  {% comment %} 
                   <option value="3">3</option>
                   <option value="4">4</option>
                   <option value="5">5</option>
@@ -78,7 +89,9 @@
                   <option value="7">7</option>
                   <option value="8">8</option>
                   <option value="9">9</option>
-                  <option value="10">10</option>
+                  <option value="10">10</option> 
+                  {% endcomment %}
+
                 </select>
               </div>
               <div class="col-md-6 mb-3">
@@ -86,7 +99,12 @@
                   <option selected="true" disabled="disabled">
                     Max Price (Any)
                   </option>
-                  <option value="1000000">$1,000,000</option>
+
+                  {% for Alan,Jonathan in price_choices.items %}
+                  <option value="{{Alan}}">{{Jonathan}}</option>
+                  {% endfor %}
+
+                  {% comment %}
                   <option value="2000000">$2,000,000</option>
                   <option value="3000000">$3,000,000</option>
                   <option value="4000000">$4,000,000</option>
@@ -96,6 +114,8 @@
                   <option value="8000000">$8,000,000</option>
                   <option value="9000000">$9,000,000</option>
                   <option value="10000000">$10M+</option>
+                  {% endcomment %}
+
                 </select>
               </div>
             </div>
@@ -131,7 +151,7 @@
           <div class="card-body">
             <div class="listing-heading text-center">
               <h4 class="text-primary">{{listing.title}}</h4>
-              <p><i class="fas fa-map-marker text-secondary"></i>{{listing.city}}</p>
+              <p><i class="fas fa-map-marker text-secondary"></i>{{listing.district}}</p>
             </div>
             <hr />
             <div class="row py-2 text-secondary">
@@ -146,10 +166,10 @@
             </div>
             <hr />
             <div class="row py-2 text-secondary">
-              <div class="col-6"><i class="fas fa-user"></i>{{listing.realtor}}</div>
+              <div class="col-6"><i class="fas fa-user"></i> {{listing.realtor}}</div>
             </div>
             <div class="row text-secondary pb-2">
-              <div class="col-6"><i class="fas fa-clock"></i>{{listing.list_date | timesince}}</div>
+              <div class="col-6"><i class="fas fa-clock"></i> {{listing.list_date | timesince}}</div>
             </div>
             <hr />
             <a href={% url "listing" listing.id %} class="btn btn-primary btn-block"

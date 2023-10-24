@@ -25,7 +25,7 @@ class Listing(models.Model):
     realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=200)  # Character Field
     address = models.CharField(max_length=200)
-    city = models.CharField(max_length=100)
+    district = models.CharField(max_length=100)
     description = models.TextField(blank=True)  # Text Field
     price = models.IntegerField()  # Integer Field
     bedrooms = models.IntegerField()

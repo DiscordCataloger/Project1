@@ -13,10 +13,9 @@
     background-color: #5DC674;
 }
 
-#col-md-custom a {
+#rounded-custom {
+    width: 70%;
+    height: 50%;
     position: relative;
-    width: 60%;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
+    object-fit: cover;
 }
