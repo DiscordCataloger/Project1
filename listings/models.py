@@ -1,6 +1,10 @@
 from django.db import models
 from datetime import datetime
 from realtors.models import Realtor  # models.py under Realtors app
+from . import choices
+
+district_list = [(key, value)
+                 for key, value in choices.district_choices.items()]  # comprehension list
 
 
 '''
@@ -25,7 +29,7 @@ class Listing(models.Model):
     realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=200)  # Character Field
     address = models.CharField(max_length=200)
-    district = models.CharField(max_length=100)
+    district = models.CharField(max_length=100, choices=district_list)
     description = models.TextField(blank=True)  # Text Field
     price = models.IntegerField()  # Integer Field
     bedrooms = models.IntegerField()
@@ -43,6 +47,9 @@ class Listing(models.Model):
     is_published = models.BooleanField(default=True)  # True or False Field
     list_date = models.DateTimeField(
         default=datetime.now, blank=True)  # Date and Time Field
+
+    def get_district_display(self):
+        return dict(choices.district_choices).get(self.district, '')
 
     def __str__(self):
         # Return the names of the respective data in the database

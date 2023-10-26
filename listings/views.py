@@ -36,7 +36,8 @@ def listing(request, listing_id):
  #   listing = Listing.objects.get(id=listing_id)
     try:
         listing = get_object_or_404(Listing, pk=listing_id)
-        context = {'listing': listing}
+        context = {'listing': listing,
+                   'district': district_choices[listing.district]}
         return render(request, "listings/listing.html", context)
     except Http404:
         return render(request, '404.html')

@@ -22,7 +22,8 @@
               <div class="col-md-4 mb-3">
                 <label class="sr-only">District</label>
                 <select name="district" class="form-control">
-                  <option selected="true" disabled="disabled">District (All)</option>
+                 {% comment %} <option selected="true" disabled="disabled">District (All)</option> {% endcomment %}
+                 <option selected="true" value="">District (All)</option>
                   
                   {% for key,value in district_choices.items %}
                   <option value="{{key}}" {% if key == values.district %} selected {% endif %}>{{value}}</option>
@@ -56,10 +57,10 @@
               <div class="col-md-6 mb-3">
                 <label class="sr-only">Bedrooms</label>
                 <select name="bedrooms" class="form-control">
-                  <option selected="true" disabled="disabled">Bedrooms (Any)</option>
+                  <option selected="true" value="">Bedrooms (Any)</option>
                   
                   {% for key,value in bedroom_choices.items %}
-                  <option value="{{key}}">{{value}}</option>
+                  <option value="{{key}}" {% if key == values.bedrooms %} selected {% endif %}>{{value}}</option>
                   {% endfor %}
                   
                   {% comment %} 
@@ -78,10 +79,10 @@
               </div>
               <div class="col-md-6 mb-3">
                 <select name="price" class="form-control">
-                  <option selected="true" disabled="disabled">Max Price (All)</option>
+                  <option selected="true" value="">Max Price (All)</option>
                   
                   {% for key,value in price_choices.items %}
-                  <option value="{{key}}">{{value}}</option>
+                  <option value="{{key}}" {% if key == values.price %} selected {% endif %}>{{value}}</option>
                   {% endfor %}
                   
                   
