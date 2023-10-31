@@ -155,3 +155,9 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     messages.SUCCESS: "success"
 }
+
+EMAIL_HOST = "smtp.mail.yahoo.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "cat2006house@yahoo.com.hk"
+EMAIL_HOST_PASSWORD = "ecruenpmjbbhrxcx"
+EMAIL_USE_TLS = True

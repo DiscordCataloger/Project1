@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
-from listings.models import Listing
+from contacts.models import Contact
 
 
 def login(request):
@@ -60,10 +60,10 @@ def logout(request):
 
 
 def dashboard(request):
-    listings = Listing.objects.all().order_by(
-        'id').filter(is_published=True)
+    user_contacts = Contact.objects.order_by(
+        '-contact_date').filter(user_id=request.user.id)  # variable = database
     context = {
-        'listings': listings,
+        'contacts': user_contacts
     }
     return render(request, 'accounts/dashboard.html', context)
 

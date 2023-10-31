@@ -31,8 +31,11 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2>Welcome John</h2>
+          <h2>Welcome {{user.first_name}}</h2>
           <p>Here are the property listings that you have inquired about</p>
+          
+        {% if contacts %}
+
           <table class="table">
             <thead>
               <tr>
@@ -42,24 +45,15 @@
               </tr>
             </thead>
             <tbody>
-
-             {% if listings %}
-
-              {% for listing in listings %}
+            {% for contact in contacts %}
               <tr>
-                <td>{{listing.id}}</td>
-                <td>{{listing.title}}</td>
+                <td>{{contact.id}}</td>
+                <td>{{contact.listing}}</td>
                 <td>
-                  <a class="btn btn-light" href="{% url 'listing' listing.id %}">View Listing</a>
+                  <a class="btn btn-light" href="{% url 'listing' contact.listing_id %}">View Listing</a>
                 </td>
               </tr>
-              {% endfor %}
-
-              {% else %}
-              <div class="col-md-12">
-                <p>No Listings Available</p>
-              </div>
-              {% endif %}
+            {% endfor %}
 
               {% comment %}
                <tr>
@@ -80,6 +74,11 @@
 
             </tbody>
           </table>
+        
+        {% else %}
+        <p>You have no inquiries!</p>
+        {% endif %}
+        
         </div>
       </div>
     </div>
