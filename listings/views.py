@@ -64,7 +64,7 @@ def search(request):
     if 'district' in request.GET:
         district = request.GET['district']
         if district:
-            district = district_choices[district]
+            get_district_display = district_choices[district]
             queryset_list = queryset_list.filter(
                 district__iexact=district  # exact district
             )
